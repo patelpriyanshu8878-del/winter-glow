@@ -1,0 +1,282 @@
+/* @tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap");
+
+@layer base {
+  :root {
+    /* Christmas Theme */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 0 72% 51%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 142 76% 36%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 45 93% 47%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 72% 51%;
+
+    --radius: 1rem;
+
+    /* Custom Christmas colors */
+    --christmas-red: 0 72% 51%;
+    --christmas-green: 142 76% 36%;
+    --christmas-gold: 45 93% 47%;
+    --snow-white: 0 0% 100%;
+    --frost: 200 30% 95%;
+
+    /* Glassmorphism */
+    --glass-bg: 0 0% 100% / 0.7;
+    --glass-border: 0 0% 100% / 0.3;
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+
+    /* Neon glow */
+    --glow-primary:
+      0 0 20px hsl(0 72% 51% / 0.5), 0 0 40px hsl(0 72% 51% / 0.3);
+    --glow-secondary:
+      0 0 20px hsl(142 76% 36% / 0.5), 0 0 40px hsl(142 76% 36% / 0.3);
+    --glow-gold: 0 0 20px hsl(45 93% 47% / 0.5), 0 0 40px hsl(45 93% 47% / 0.3);
+  }
+
+  .dark {
+    /* Professional Dark Mode */
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 100% 60%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 210 100% 60%;
+
+    /* Professional glow */
+    --glow-primary:
+      0 0 20px hsl(210 100% 60% / 0.4), 0 0 40px hsl(210 100% 60% / 0.2);
+    --glow-secondary: 0 0 20px hsl(210 100% 60% / 0.3);
+    --glow-gold: 0 0 20px hsl(210 100% 60% / 0.3);
+
+    --glass-bg: 222 47% 10% / 0.8;
+    --glass-border: 217 33% 25% / 0.5;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Poppins', 'Playfair Display', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply backdrop-blur-xl bg-card/70 border border-white/20 shadow-xl;
+  }
+
+  /* Glowing heading animation */
+  .glow-heading {
+    @apply relative;
+    animation: glowPulse 2s ease-in-out infinite;
+  }
+
+  /* Breathing animation */
+  .breathing {
+    animation: breathe 4s ease-in-out infinite;
+  }
+
+  /* Grow up hover effect */
+  .grow-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .grow-hover:hover {
+    @apply scale-105 -translate-y-2;
+    box-shadow: var(--glow-primary);
+  }
+
+  /* Neon text glow */
+  .neon-text {
+    text-shadow: var(--glow-primary);
+  }
+
+  /* Flowing animation */
+  .flow-right {
+    animation: flowRight 20s linear infinite;
+  }
+
+  .flow-left {
+    animation: flowLeft 20s linear infinite;
+  }
+
+  .flow-right:hover,
+  .flow-left:hover {
+    animation-play-state: paused;
+  }
+
+  /* Progress bar glow */
+  .progress-glow {
+    box-shadow: var(--glow-primary);
+  }
+
+  /* Timeline glow */
+  .timeline-glow {
+    @apply relative;
+  }
+
+  .timeline-glow::before {
+    content: "";
+    @apply absolute left-1/2 top-0 bottom-0 w-1 -translate-x-1/2;
+    background: linear-gradient(
+      180deg,
+      hsl(var(--primary)),
+      hsl(var(--secondary))
+    );
+    box-shadow: var(--glow-primary);
+  }
+}
+
+@layer utilities {
+  /* Keyframes */
+  @keyframes glowPulse {
+    0%,
+    100% {
+      text-shadow:
+        0 0 10px hsl(var(--primary) / 0.5),
+        0 0 20px hsl(var(--primary) / 0.3),
+        0 0 30px hsl(var(--primary) / 0.2);
+    }
+    50% {
+      text-shadow:
+        0 0 20px hsl(var(--primary) / 0.8),
+        0 0 40px hsl(var(--primary) / 0.5),
+        0 0 60px hsl(var(--primary) / 0.3);
+    }
+  }
+
+  @keyframes breathe {
+    0%,
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px hsl(var(--primary) / 0.5);
+    }
+  }
+
+  @keyframes flowRight {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  @keyframes flowLeft {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes snowfall {
+    0% {
+      transform: translateY(-10vh) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0.3;
+    }
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+
+  .typing-effect {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid hsl(var(--primary));
+    animation:
+      typing 3.5s steps(60, end),
+      blink 0.75s step-end infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+}
