@@ -85,14 +85,14 @@ export default {
           to: { height: "0" },
         },
 
-        /* ✅ MARQUEE */
+        /* ✅ MARQUEE - GPU accelerated */
         "marquee-right": {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
+          "0%": { transform: "translate3d(0, 0, 0)" },
+          "100%": { transform: "translate3d(-50%, 0, 0)" },
         },
         "marquee-left": {
-          "0%": { transform: "translateX(-50%)" },
-          "100%": { transform: "translateX(0)" },
+          "0%": { transform: "translate3d(-50%, 0, 0)" },
+          "100%": { transform: "translate3d(0, 0, 0)" },
         },
 
         shimmer: {
@@ -101,14 +101,14 @@ export default {
         },
       },
 
-      /* ✅ ANIMATIONS */
+      /* ✅ ANIMATIONS - slower for smoother mobile */
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
 
-        /* 👇 Tools scrolling */
-        "marquee-right": "marquee-right 28s linear infinite",
-        "marquee-left": "marquee-left 28s linear infinite",
+        /* 👇 Tools scrolling - slower for performance */
+        "marquee-right": "marquee-right 35s linear infinite",
+        "marquee-left": "marquee-left 35s linear infinite",
 
         shimmer: "shimmer 2s linear infinite",
       },

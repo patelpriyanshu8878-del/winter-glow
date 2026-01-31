@@ -116,29 +116,34 @@
 }
 
 @layer components {
-  /* Glassmorphism card */
+  /* Glassmorphism card - optimized blur */
   .glass-card {
-    @apply backdrop-blur-xl bg-card/70 border border-white/20 shadow-xl;
+    @apply backdrop-blur-md bg-card/70 border border-white/20 shadow-xl;
+    transform: translateZ(0);
   }
 
-  /* Glowing heading animation */
+  /* Glowing heading animation - GPU accelerated */
   .glow-heading {
     @apply relative;
-    animation: glowPulse 2s ease-in-out infinite;
+    animation: glowPulse 3s ease-in-out infinite;
+    will-change: text-shadow;
   }
 
   /* Breathing animation */
   .breathing {
     animation: breathe 4s ease-in-out infinite;
+    will-change: transform, box-shadow;
   }
 
-  /* Grow up hover effect */
+  /* Grow up hover effect - GPU accelerated */
   .grow-hover {
-    @apply transition-all duration-300 ease-out;
+    @apply transition-transform duration-300 ease-out;
+    will-change: transform;
+    transform: translateZ(0);
   }
 
   .grow-hover:hover {
-    @apply scale-105 -translate-y-2;
+    transform: scale(1.05) translateY(-8px) translateZ(0);
     box-shadow: var(--glow-primary);
   }
 
@@ -233,11 +238,11 @@
 
   @keyframes snowfall {
     0% {
-      transform: translateY(-10vh) rotate(0deg);
+      transform: translate3d(0, -10vh, 0) rotate(0deg);
       opacity: 1;
     }
     100% {
-      transform: translateY(100vh) rotate(360deg);
+      transform: translate3d(0, 100vh, 0) rotate(360deg);
       opacity: 0.3;
     }
   }
