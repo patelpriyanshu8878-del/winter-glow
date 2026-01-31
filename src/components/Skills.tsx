@@ -1,4 +1,5 @@
 import React from 'react';
+import { IconType } from 'react-icons';
 import {
   FaGithub,
   FaGitAlt,
@@ -20,13 +21,12 @@ import {
   SiFigma,
 } from "react-icons/si";
 
+import { useTheme } from '@/contexts/ThemeContext';
+
 type Tool = {
   name: string;
   icon: IconType;
 };
-
-import { useTheme } from '@/contexts/ThemeContext';
-import { Icon } from 'lucide-react';
 
 const toolsRow1: Tool[] = [
   { name: "Postman", icon: SiPostman},
