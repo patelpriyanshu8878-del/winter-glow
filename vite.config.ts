@@ -1,5 +1,6 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import { componentTagger } from "lovable-tagger";
 
 import path from "path";
 import { fileURLToPath } from "url";
@@ -16,7 +17,10 @@ export default defineConfig(({ mode }: { mode: string }) => ({
       overlay: false,
     },
   },
-  plugins: [react()],
+  plugins: [
+    react(),
+    mode === 'development' && componentTagger(),
+  ].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
